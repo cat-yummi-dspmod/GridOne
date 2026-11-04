@@ -1,0 +1,7 @@
+{
+  "name": "GridOne",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/tripleInt/GridOne",
+  "description": "One wireless power grid per planet. Existing grid membership survives loading the save in vanilla.",
+  "dependencies": ["xiaoye97-BepInEx-5.4.17"]
+}
