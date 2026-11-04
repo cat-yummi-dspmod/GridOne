@@ -1,0 +1,8 @@
+bin/
+obj/
+dist/
+.cache/
+.dotnet/
+.nuget/
+.vs/
+*.user
