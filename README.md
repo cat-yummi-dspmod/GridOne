@@ -32,7 +32,7 @@ Back up your save before first use. Multiplayer has not been tested.
 
 This mod only interacts with mods that change power or the power grid. Compatibility conflicts are possible.
 
-Confirmed compatible with soarqin **Cheat Enabler**. GridOne can also relieve dismantle stutter caused by Cheat Enabler placing huge numbers of power poles.
+Confirmed compatible with soarqin's **Cheat Enabler**. GridOne can even relieve dismantle stutter from Cheat Enabler's wind power ignoring distance limits, which creates huge webs of power poles wired to each other.
 
 ## Performance and threading
 
@@ -106,7 +106,7 @@ MIT license. See `LICENSE`.
 
 本 Mod 只会与修改电力或电网的 Mod 产生交互，可能出现兼容冲突。
 
-已确认与 soarqin的 **Cheat Enabler** 兼容；甚至可缓解因 Cheat Enabler 海量电线杆导致的拆除卡顿。
+已确认与 soarqin的 **Cheat Enabler** 兼容；甚至可缓解因 Cheat Enabler 风电无视距离，而造成的海量电线杆互相连接，导致的拆除卡顿。
 
 ## 性能与线程
 
