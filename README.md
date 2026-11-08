@@ -22,7 +22,7 @@ Saved membership survives loading. After each load, build or remove a power node
 
 ## 安装 / Installation
 
-- **Thunderstore / r2modman** — 本地测试时，通过设置中的 **Import local mod** 导入 `GridOne-1.0.0-Thunderstore.zip`。使用的配置需已安装 `xiaoye97-BepInEx-5.4.17` 或兼容的 BepInEx 5。依赖已声明在 `manifest.json` 中。
+- **Thunderstore / r2modman** — 本地测试时，通过设置中的 **Import local mod** 导入 `bin/Release/GridOne.zip`。使用的配置需已安装 `xiaoye97-BepInEx-5.4.17` 或兼容的 BepInEx 5。依赖已声明在 `manifest.json` 中。
 - **手动安装** — 关闭游戏，将包内 `BepInEx/plugins/GridOne/GridOne.dll` 放入实际启动配置对应的同一路径。
 
 For local testing, import the ZIP through **Import local mod** in the mod manager settings and ensure the profile already has BepInEx 5 installed. For manual installation, close the game and copy the DLL into the active installation or profile's `BepInEx/plugins/GridOne/` directory.
@@ -63,41 +63,16 @@ Topology changes execute synchronously at vanilla construction and removal entry
 
 ## 从源码编译 / Building from source
 
-在 Windows 上准备 .NET 10 SDK、.NET Framework 4.7.2 引用程序集、游戏本体以及 BepInEx 5。项目引用本机的游戏、Unity、BepInEx 和 Harmony DLL。
+准备 .NET SDK（`net472` 目标）即可编译；游戏 API 来自 NuGet `DysonSphereProgram.GameLibs`，无需本机游戏目录。
 
-On Windows, install the .NET 10 SDK and .NET Framework 4.7.2 targeting pack. A local game installation and BepInEx 5 are required for the assembly references.
-
-插件运行目标为游戏 Unity/Mono 使用的 .NET Framework 4.7.2（`net472`）。
-
-The plugin targets .NET Framework 4.7.2 (`net472`) for the game's Unity/Mono runtime.
-
-在仓库根目录运行，将路径替换为自己的安装位置。`BepInExDirectory` 指向含有 `core` 子目录的文件夹。
-
-Run from the repository root with your local paths. `BepInExDirectory` must contain the `core` subdirectory.
+Install a .NET SDK and run `dotnet build` or `.\build_thunderstore.ps1`. Game assemblies come from the BepInEx NuGet feed, not a local install.
 
 ```powershell
-.\build.ps1 `
-    -GameDirectory 'C:\Games\Dyson Sphere Program' `
-    -BepInExDirectory 'C:\Mods\DSPProfile\BepInEx'
+dotnet build -c Release
+.\build_thunderstore.ps1
 ```
 
-构建脚本会从 `assets/icon-source.png` 生成 256×256 的 `icon.png`，核对程序集与 manifest 的版本，并将 DLL 和 Thunderstore ZIP 写入 `dist/`。ZIP 的根目录直接包含以下文件。
-
-The script generates the 256×256 icon from the supplied artwork, checks the assembly and manifest versions, and writes the DLL and Thunderstore ZIP to `dist/`. The ZIP layout is as follows.
-
-```text
-manifest.json
-README.md
-icon.png
-CHANGELOG.md
-LICENSE
-BepInEx/
-  plugins/
-    GridOne/
-      GridOne.dll
-```
-
-打包结构参考 [Thunderstore 官方说明](https://wiki.thunderstore.io/mods/creating-a-package) 和 [BepInEx 打包规则](https://wiki.thunderstore.io/mods/packaging-your-mods)。
+Thunderstore 包输出为 `bin/Release/GridOne.zip`，根目录包含 `manifest.json`、`README.md`、`icon.png`、`GridOne.dll`。
 
 ## 验证范围 / Validation
 
